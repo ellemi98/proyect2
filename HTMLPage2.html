@@ -7,11 +7,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <link rel="stylesheet" href="Menu.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="72038951a562ea7dd9fb.css"/>
 
+
+
+</head>
+<body>
     <style>
+        .navbar {
+    background-color: #f5e750;
+    color: #010101;
+        }
+
         .daltonico-img {
             display: inline-block;
             margin: 10px;
@@ -33,24 +47,7 @@
             object-fit: contain;
         }
 
-        .content {
-            flex: 1 0 auto;
-        }
-
-        .navbar {
-            background-color: #2c3e50;
-            color: #ffffff;
-        }
-
-        .navbar-toggler {
-            color: #ffffff;
-        }
-
-        .navbar-brand {
-            color: #ffffff;
-            font-weight: bold;
-        }
-
+      
         .color-preview {
             width: 50px;
             height: 50px;
@@ -64,112 +61,9 @@
             background-color: #f8f9fa;
             color: #343a40;
         }
-
-        .title {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        button {
-            background-color: #dc3545;
-            border-color: #dc3545;
-            color: #ffffff;
-            font-size: 15px;
-            padding: 10px 30px;
-            border-radius: 30px;
-            transition: background-color 0.3s ease;
-        }
-
-            .btn-primary:hover,
-            .btn-primary:focus {
-                background-color: #c82333;
-                border-color: #c82333;
-                color: #ffffff;
-            }
-
-        .btn-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 17px;
-            transition: color 0.3s ease;
-        }
-
-            .btn-link:hover,
-            .btn-link:focus {
-                color: #dc3545;
-            }
-
-        /*        footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #f5f5f5;
-            padding: 20px;
-        }*/
-
-        @media (max-width: 767px) {
-            /* body {
-
-                background-repeat: no-repeat;
-                background-position: center;
-
-            }
-            .content {
-                min-height: calc(100% - 56px);  Resta el alto del footer
-            }*/
-            .btn-primary {
-                background-color: #dc3545;
-                border-color: #dc3545;
-                color: #ffffff;
-                font-size: 15px;
-                padding: 10px 30px;
-                border-radius: 30px;
-                transition: background-color 0.3s ease;
-            }
-
-                .btn-primary:hover,
-                .btn-primary:focus {
-                    background-color: #c82333;
-                    border-color: #c82333;
-                    color: #ffffff;
-                }
-
-            .btn-link {
-                color: #ffffff;
-                text-decoration: none;
-                font-size: 15px;
-                transition: color 0.3s ease;
-            }
-        }
-
-        /* Estilos para pantallas más grandes */
-        /*@media (min-width: 768px) {
-            body {
-                background-position: center;
-
-            }
-            .content {
-                min-height: 100% -300px;*/ /* Resta el alto del footer */
-        /*}
-        }*/
-
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: auto;
-            background-color: #2c3e50; /* Ajusta la altura del footer según tus necesidades */
-        }
+   
+       
     </style>
-</head>
-<body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -191,55 +85,63 @@
         </div>
     </nav>
     <div class="content">
-        <div class="container h-100">
-            <div class="row h-100 justify-content-center align-items-center">
-                <div class="col-12 ">
-                    <br />
-                    <hr />
-                    <h1>Filtros de colores</h1>
-                    <hr />
-                    <br />
+        <div class="container-fluid h-100">
+
+            <div class="row">
+            <div class="col-12 ">
+                <br />
+            
+                <h1>Filtro de colores</h1>
+           
+                <br />
+            </div>
+            </div>
+        <!-- Grid container -->
+
+        <div class="container">
+
+  
+            <div class="row">
+                <div class="col-sm-8 col-md-10 col-12">
+                  <div class="input-group">
+                    <input type="file" id="upload-file" class="form-control" />
+                    <label for="upload-file" class="input-group-text">Subir imagen</label>
+                  </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="preview-wrapper">
-                            <canvas id="canvas" class="mx-auto d-block"></canvas>
-                            <p class="process-message"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-8 col-md-10 col-8 ">
 
-                        <input type="file" id="upload-file" class="form-control form-control-lg" />
-                        <label for="upload-file">Subir imagen</label>
-
-                    </div>
-                    <div class="col-2">
-                        <button id="download-btn" class="btn-primary m-1 btn-sm"><i class="fa fa-download"></i> </button>
-
-                    </div>
-
-                </div>
-                <div class="editor-buttons">
-                    <div class="col-12 p-4 pb-0">
-                        <br />
-                        <input type="hidden" id="hex-color" placeholder="#ffffff (Overlay Color)" />
-                        <br />
-                        <button id="maxrgb-btn" class="btn btn-secondary mb-4 btn-lg ">MaxRGB</button>
-                        <button id="minrgb-btn" class="btn btn-secondary mb-4 btn-lg ">MinRGB</button>
-                        <button id="threshold-btn" class="btn btn-secondary mb-4 btn-lg">Threshold</button>
-                        <button id="greyscale-btn" class="btn btn-secondary mb-4 btn-lg ">Greyscale</button>
-                        <button id="erased-btn" class="btn btn-secondary mb-4 btn-lg ">Erased</button>
-                        <button id="emboss-btn" class="btn btn-secondary mb-4  btn-lg">Emboss</button>
-                        <button id="protanopia-btn" class="btn btn-dark mb-4 btn-lg">Protanopia</button>
-                        <button id="deuteranopia-btn" class="btn btn-dark mb-4 btn-lg">Deuteranopia</button>
-                        <button id="tritanopia-btn" class="btn btn-dark mb-4 btn-lg">Tritanopia</button>
-
-                        <br /><br />   <br /><br />   <br /><br />
+              </div>
+              <div class="row">
+                <div class="col-12">
+                    <div class="preview-wrapper">
+                        <canvas id="canvas" class="mx-auto d-block"></canvas>
+                        <p class="process-message"></p>
                     </div>
                 </div>
             </div>
+            
+              <div class="editor-buttons">
+            
+                  <div class="row">
+                    <div class="col-12 col-12-sm">
+                      <button id="maxrgb-btn" class="btn btn-secondary mb-4">MaxRGB</button>
+                      <button id="minrgb-btn" class="btn btn-secondary mb-4">MinRGB</button>
+                      <button id="threshold-btn" class="btn btn-secondary mb-4">Threshold</button>
+                      <button id="greyscale-btn" class="btn btn-secondary mb-4">Greyscale</button>
+                      <button id="erased-btn" class="btn btn-secondary mb-4">Erased</button>
+                      <button id="emboss-btn" class="btn btn-secondary mb-4">Emboss</button>
+                      <button id="protanopia-btn" class="btn btn-dark mb-4">Protanopia</button>
+                      <button id="deuteranopia-btn" class="btn btn-dark mb-4">Deuteranopia</button>
+                      <button id="tritanopia-btn" class="btn btn-dark mb-4">Tritanopia</button>
+                     <button id="download-btn" class="btn btn-primary mb-4"><i class="fa fa-download"></i></button>
+                     
+                      <br> <br> <br>   <br> <br> <br>
+                    </div>
+                  </div>
+                </div>
+               
+              
+  
+        <!-- Grid container -->
         </div>
     </div>
 
@@ -248,9 +150,9 @@
         <!-- Grid container -->
         <!-- Grid container -->
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="text-center" style="background-color: rgba(0, 0, 0, 0.2);">
             ©2023 Copyright:
-            <a class="text-white" href="#">Proyecto Integrador/Grupo 1</a>
+            <a class="text-white" href="#">P. Integrador/Grupo 1</a>
         </div>
         <!-- Copyright -->
     </footer>
@@ -535,5 +437,6 @@
     </script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

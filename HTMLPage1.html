@@ -7,274 +7,51 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <link rel="stylesheet" href="Menu.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script>
-        // Función para manejar el evento de carga de una imagen
-        function handleImageUpload(event) {
-            var input = event.target;
-            var reader = new FileReader();
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/@primer/css@^16.0.0/dist/primer.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="72038951a562ea7dd9fb.css"/>
+    <link rel="shortcut icon" href="bcd314cdbf1ada99dee2.png" type="image/x-icon">
+    <link rel="canonical" href="https://photocolorpicker.com/es">
+    <link rel="alternate" hreflang="x-default" href="https://photocolorpicker.com/" /><link rel="alternate" hreflang="en" href="https://photocolorpicker.com/" /><link rel="alternate" hreflang="es" href="https://photocolorpicker.com/es" />
+         <!-- Google tag (gtag.js) -->
+         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QXEFVZG12W"></script>
+         <script>
+             window.dataLayer = window.dataLayer || [];
+     
+             function gtag() {
+                 dataLayer.push(arguments);
+             }
+             gtag('js', new Date());
+     
+             gtag('config', 'G-QXEFVZG12W');
+         </script>
+         <script type="text/javascript">
+         (function(c,l,a,r,i,t,y){
+             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+         })(window, document, "clarity", "script", "hqgzazb525");
+         </script>
 
-            reader.onload = function () {
-                var img = new Image();
-                img.onload = function () {
-                    var colorThief = new ColorThief();
-                    var colorPalette = colorThief.getPalette(img, 5); // Obtener una paleta de 5 colores
-
-                    // Limpiar la vista previa de colores
-                    $('#color-preview-container').empty();
-
-                    // Mostrar la imagen cargada
-                    $('#image-preview').attr('src', reader.result);
-
-                    // Mostrar los colores predominantes
-                    for (var i = 0; i < colorPalette.length; i++) {
-                        var color = colorPalette[i];
-                        var colorName = getColorName(color[0], color[1], color[2]);
-
-                        // Crear un elemento de vista previa de color
-                        var colorPreview = $('<div class="color-preview"></div>');
-                        colorPreview.css('background-color', 'rgb(' + color[0] + ',' + color[1] + ',' + color[2] + ')');
-
-                        // Agregar el nombre del color como título emergente
-                        colorPreview.attr('title', colorName);
-
-                        // Agregar la vista previa de color al contenedor
-                        $('#color-preview-container').append(colorPreview);
-                    }
-                };
-                img.src = reader.result;
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-
-        // Función para obtener el nombre del color en base a los valores RGB
-        function getColorName(r, g, b) {
-            var colorMap = {
-                'Rojo': [255, 0, 0],
-                'Verde': [0, 255, 0],
-                'Azul': [0, 0, 255],
-                'Morado': [128, 0, 128],
-                'Amarillo': [255, 255, 0],
-                'Naranja': [255, 165, 0],
-                'Verde oscuro': [0, 128, 0],
-                'Azul oscuro': [0, 0, 128],
-                'Ocre': [128, 128, 0],
-                'Marrón': [128, 0, 0],
-                'Turquesa': [0, 128, 128],
-                'Gris': [128, 128, 128],
-                'Blanco': [255, 255, 255],
-                'Negro': [0, 0, 0],
-                'Rosa': [255, 192, 203],
-                'Cian': [0, 255, 255],
-                'Granate': [139, 0, 0],
-                'Fucsia': [255, 20, 147],
-                'Magenta': [255, 0, 255],
-                'Canela': [210, 105, 30],
-                'Trigo': [245, 222, 179],
-                'Caqui': [189, 183, 107],
-                'Orquídea': [218, 112, 214],
-                'Crema': [255, 250, 205],
-                'Marrón claro': [205, 92, 92],
-                'Amarillo verde': [154, 205, 50],
-                'Rosa claro': [240, 128, 128],
-                'Melocotón': [255, 228, 181],
-                'Acero azul': [70, 130, 180],
-                'Azul pálido': [175, 238, 238],
-                'Verde lima': [0, 255, 127]
-            };
-
-            var minDistance = Number.MAX_VALUE;
-            var closestColor = 'Desconocido';
-
-            for (var color in colorMap) {
-                var colorValue = colorMap[color];
-                var distance = Math.sqrt(Math.pow(r - colorValue[0], 2) + Math.pow(g - colorValue[1], 2) + Math.pow(b - colorValue[2], 2));
-
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestColor = color;
-                }
-            }
-
-            return closestColor;
-        }
-
-
-        // Función para manejar el clic en la imagen
-        function handleImageClick(event) {
-            var image = event.target;
-            var imagePreview = document.getElementById('image-preview');
-            var rect = event.target.getBoundingClientRect();
-            var x = event.clientX - rect.left;
-            var y = event.clientY - rect.top;
-            var scaleFactorX = image.width / imagePreview.offsetWidth;
-            var scaleFactorY = image.height / imagePreview.offsetHeight;
-            var originalX = x * scaleFactorX;
-            var originalY = y * scaleFactorY;
-
-            var canvas = document.createElement('canvas');
-            var context = canvas.getContext('2d');
-            var img = new Image();
-            img.crossOrigin = 'Anonymous';
-            img.src = image.src;
-
-            img.onload = function () {
-                canvas.width = image.width;
-                canvas.height = image.height;
-                context.drawImage(img, 0, 0, img.width, img.height);
-
-                var pixelData = context.getImageData(originalX, originalY, 1, 1).data;
-                var r = pixelData[0];
-                var g = pixelData[1];
-                var b = pixelData[2];
-
-                var colorName = getColorName(r, g, b);
-                alert("El color predominante en esta región es: " + colorName);
-            };
-        }
-
-    </script>
+</head>
+<body>
     <style>
 
-        .content {
-            flex: 1 0 auto;
-        }
-
-        .navbar {
-            background-color: #2c3e50;
-            color: #ffffff;
-        }
-
-        .navbar-toggler {
-            color: #ffffff;
-        }
-
-        .navbar-brand {
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        .color-preview {
-            width: 50px;
-            height: 50px;
-            display: inline-block;
-            margin-right: 5px;
-            border: 1px solid #ccc;
-            cursor: pointer;
-        }
-
-        body {
+    body {
             background-color: #f8f9fa;
             color: #343a40;
         }
+   
 
-        .title {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .btn-primary {
-            background-color: #dc3545;
-            border-color: #dc3545;
-            color: #ffffff;
-            font-size: 15px;
-            padding: 10px 30px;
-            border-radius: 30px;
-            transition: background-color 0.3s ease;
-        }
-
-            .btn-primary:hover,
-            .btn-primary:focus {
-                background-color: #c82333;
-                border-color: #c82333;
-                color: #ffffff;
-            }
-
-        .btn-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 17px;
-            transition: color 0.3s ease;
-        }
-
-            .btn-link:hover,
-            .btn-link:focus {
-                color: #dc3545;
-            }
-
-        /*        footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #f5f5f5;
-            padding: 20px;
-        }*/
-
-        @media (max-width: 767px) {
-            /* body {
-
-                background-repeat: no-repeat;
-                background-position: center;
-
-            }
-            .content {
-                min-height: calc(100% - 56px);  Resta el alto del footer
-            }*/
-            .btn-primary {
-                background-color: #dc3545;
-                border-color: #dc3545;
-                color: #ffffff;
-                font-size: 15px;
-                padding: 10px 30px;
-                border-radius: 30px;
-                transition: background-color 0.3s ease;
-            }
-
-                .btn-primary:hover,
-                .btn-primary:focus {
-                    background-color: #c82333;
-                    border-color: #c82333;
-                    color: #ffffff;
-                }
-
-            .btn-link {
-                color: #ffffff;
-                text-decoration: none;
-                font-size: 15px;
-                transition: color 0.3s ease;
-            }
-        }
-
-        /* Estilos para pantallas más grandes */
-        /*@media (min-width: 768px) {
-            body {
-                background-position: center;
-
-            }
-            .content {
-                min-height: 100% -300px;*/ /* Resta el alto del footer */
-        /*}
-        }*/
-
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: auto;
-            background-color: #2c3e50; /* Ajusta la altura del footer según tus necesidades */
-        }
+   
     </style>
-</head>
-<body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -297,28 +74,116 @@
     </nav>
     <div class="content">
         <div class="container-fluid h-100">
-            <div class="row h-100 justify-content-center align-items-center">
-                <div class="col-12 col-md-10">
-                    <br />
-                    <hr />
-                    <h1>Verificador de Color</h1>
-                    <hr />
-                    <br />
-                    <label for="imagenLabel" class="form-label">Large file input example</label>
-                    <input type="file" accept="image/*" onchange="handleImageUpload(event)" class="form-control form-control-lg" id="imagenLabel">
-                    <br>
-                    <br>
-                    <div id="image-preview-container">
-                        <img id="image-preview" class="mx-auto d-block" src="https://2.bp.blogspot.com/-73f0gbubjto/Ue2NRGhG1TI/AAAAAAAAAbI/M5NeQJIDvqM/s400/circulo-cromatico-02.png" alt="Vista previa de la imagen" style="max-width:100%;">
-                    </div>
-                    <div id="color-preview-container"></div>
 
-                    <hr />
-                    <h3 class="subtitle text-center">Descubre una nueva experiencia</h3>
-                    <img id="image-note" class="mx-auto d-block" src="https://i.pinimg.com/736x/97/b0/e3/97b0e3bfc634ac23cca13b17cd18fe71.jpg" alt="Vista previa de la imagen" style="max-width:100%;">
-                    <br /><br /> <br /><br />
+
+            <div class="col-12 ">
+                <br />
+                <hr />
+                <h1>Identificador de colores</h1>
+                <hr />
+                <br />
+            </div>
+        <!-- Grid container -->
+
+        <div class="container">
+            <div id="color-picker">
+                <div class="image-color-picker">
+                    <div id="image-container" class="image-container" :style="{ backgroundImage: 'url(' + src + ')', height: resizedHeight + 'px' || 400}" :class="{imageLoading: imageLoading}">
+                        <canvas id="canva" class="image-canva-picker" ref="canvas"></canvas>
+                        <div class="eyeDropper" id="eyeDropper" :style="{ top: 0, left: 0, background: hoveredHex || '#f6f6f6' , display: 'none'}">
+                            <span class="cursor-eye"></span>
+                            <div class="dropper-wrapper">
+                                <img id="zoomedImage" :style="{ height: resizedHeight * zoom + 'px' || 400}" :src="src" alt="Image Color Finder Eyedropper"/>
+                            </div>
+                        </div>
+                        <span :class="{active: imageLoading}" class="loading">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" stroke="#000">
+                                <g fill="none" fill-rule="evenodd" stroke-width="2">
+                                    <circle cx="22" cy="22" r="1">
+                                        <animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"/>
+                                        <animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="22" cy="22" r="1">
+                                        <animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"/>
+                                        <animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"/>
+                                    </circle>
+                                </g>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="image-selector-buttons">
+                        <label aria-label="Upload Image" class="tooltipped tooltipped-n selector-button" for="uploadedImage">
+                            Upload <input accept=".gif, .jpg, .jpeg, .png, .svg" id="uploadedImage" class="upload-image" type="file" name="img" @change="uploadFile"/>
+                        </label>
+                    </div>
+                    <div class="configuration">
+                        <span class="color-settings">
+                            <label for="systemSelect">System:</label>
+                            <select id="systemSelect" @change="toggleSystem(event)" class="select-drop">
+                                <option value="HEX">HEX</option>
+                                <option value="RGB">RGB</option>
+                                <option value="HSL">HSL</option>
+                                <option value="CMYK">CMYK</option>
+                            </select>
+                        </span>
+                        <span class="color-settings">
+                            <label for="zoomSelect">Zoom:</label>
+                            <select id="zoomSelect" @change="toggleZoom(event)" class="select-drop">
+                                <option value="1">1x</option>
+                                <option value="2">2x</option>
+                                <option value="3">3x</option>
+                                <option value="4">4x</option>
+                                <option value="5">5x</option>
+                                <option value="6">6x</option>
+                                <option value="7">7x</option>
+                                <option value="8">8x</option>
+                                <option value="9">9x</option>
+                                <option value="10">10x</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="color-settings">
+                        <div class="pixelated-container">
+                            <label for="pixelatedCheckbox">
+                                <input @change="togglePixelated(event)" type="checkbox" id="pixelatedCheckbox"/>Pixelate:
+                            </label>
+                            <input @change="pixelateCanva(event)" value="1" min="1" max="50" type="range" class="custom-range" id="pixelated"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-color-palette">
+                    <div class="custom-palette-wrapper">
+                        <div :style="{background: customColorBackground || '#f6f6f6'} " aria-label="Copy" :data-clipboard-text="customColor || '#f6f6f6'" class="tooltipped tooltipped-n image-color-canva copy-btn">
+                            <div class="options">
+                                <span :style="{color: customHexContrast || '#474747'} " :data-clipboard-text="customColor || '#f6f6f6'">
+                                    <i class="fas fa-copy"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div :style="{textTransform: system != 'HEX' && customColor ? 'lowercase' : 'uppercase' } " class="color-hex">{{ customColor || "Click on image" }}</div>
+                        <div style="padding-bottom:20px" class="color-name">{{ customColorName || " To choose your own color!" }}</div>
+                    </div>
+                    <ul>
+                        <li v-for="color in colorPalette" class="palette-wrapper">
+                            <div aria-label="Copy" :data-clipboard-text="color.hex" :style="{ backgroundColor: color.hex, textTransform: 'lowercase'}" class="tooltipped tooltipped-n image-color-canva copy-btn">
+                                <div class="options">
+                                    <span :style="{color: color.textColor } " :data-clipboard-text="color.hex" class="">
+                                        <i class="fas fa-copy"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="color-hex">{{ color.hex }}</div>
+                            <div class="color-name">{{ color.name }}</div>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
+        
+        <div style="visibility:hidden;opacity:0" id="file-dropzone" class="file-dropzone">
+            <p>Drop image anywhere</p>
+        </div>
+        <!-- Grid container -->
         </div>
     </div>
 
@@ -327,7 +192,7 @@
         <!-- Grid container -->
         <!-- Grid container -->
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="text-center" style="background-color: rgba(0, 0, 0, 0.2);">
             ©2023 Copyright:
             <a class="text-white" href="#">P. Integrador/Grupo 1</a>
         </div>
@@ -343,5 +208,13 @@
     </script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script src="https://unpkg.com/node-vibrant@3.1.3/dist/vibrant.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="https://unpkg.com/color-name-list@4.7.1/dist/colornames.umd.js"></script>
+    <script src="https://unpkg.com/nearest-color@0.4.4/nearestColor.js"></script>
+    <script src="8ff9edb22c9a71bf8543.js"></script>
+    <script defer="defer" src="index.bundle.js"></script>
 </body>
 </html>
