@@ -10,8 +10,19 @@
     <link rel="stylesheet" href="Menu.css"  />
   
     <style>
- 
-    </style>
+        @media only screen and (max-height: 900px) {
+          #footer {
+            display: none;
+          }
+        }
+      
+        /* Todos los estilos para #footer dentro de la media query */
+        #footer {
+          display: block;
+          /* Agrega aquí los demás estilos que deseas aplicar al #footer */
+        }
+      </style>
+      
 </head>
 <body>
 
@@ -35,6 +46,7 @@
             </div>
 
         </div>
+  
     </nav>
     <hr />
     <div class="container-fluid h-100 content">
@@ -52,13 +64,49 @@
                     <div class="text-center">
                         <a href="#" class="btn ">¿Quiénes somos?</a>
                     </div>
+                    <div class="container p-4 pb-0">
+                        <!-- Section: Social media -->
+                        <section class="mb-4">
+                            <!-- Facebook -->
+                            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+            
+                            <!-- Twitter -->
+                            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+            
+                            <!-- Google -->
+                            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                                <i class="fab fa-google"></i>
+                            </a>
+            
+                            <!-- Instagram -->
+                            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+            
+                            <!-- Linkedin -->
+                            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+            
+                            <!-- Github -->
+                            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </section>
+                        <!-- Section: Social media -->
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 
 
-    <footer class=" footer  text-center " id="footer">
+    <footer class="  text-center " id="footer"  style="display: none;">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
             <!-- Section: Social media -->
@@ -113,17 +161,17 @@
           const footer = document.getElementById("footer");
       
           // Función para actualizar el estado del footer
-          function updateFooter() {
-            if (navbarNav.classList.contains("show")) {
-              footer.style.display = "block"; // Oculta el footer
-            } else {
-              footer.style.display = "none"; // Muestra el footer
-            }
-          }
+          //function updateFooter() {
+            //if (navbarNav.classList.contains("show")) {
+              //footer.style.display = "block"; // Oculta el footer
+            //} else {
+             // footer.style.display = "none"; // Muestra el footer
+            //}
+          //}
       
           // Actualiza el estado del footer cuando se muestra/oculta el navbar
-          navbarNav.addEventListener("show.bs.collapse", updateFooter);
-          navbarNav.addEventListener("hide.bs.collapse", updateFooter);
+          //navbarNav.addEventListener("show.bs.collapse", updateFooter);
+          //navbarNav.addEventListener("hide.bs.collapse", updateFooter);
         });
       </script>
       

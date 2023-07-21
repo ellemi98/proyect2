@@ -819,12 +819,21 @@ header .primary-link a .icon {
     background: #fff;
     box-shadow: 0 0 20px rgba(0, 0, 0, .2)
 }
+@media only screen and (max-height: 900px) {
+    #footer {
+      display: none;
+    }
+  }
 
+  /* Todos los estilos para #footer dentro de la media query */
+  #footer {
+    display: block;
+    /* Agrega aquí los demás estilos que deseas aplicar al #footer */
+  }
 @media only screen and (max-width:567px) {
     header .primary-link {
         display: none
     }
-}
 
 header .primary-link a {
     display: flex;
