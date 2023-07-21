@@ -113,12 +113,12 @@
                     </div>
                     <div class="image-selector-buttons">
                         <label aria-label="Upload Image" class="tooltipped tooltipped-n selector-button" for="uploadedImage">
-                            Upload <input accept=".gif, .jpg, .jpeg, .png, .svg" id="uploadedImage" class="upload-image" type="file" name="img" @change="uploadFile"/>
+                            Subir imagen <input accept=".gif, .jpg, .jpeg, .png, .svg" id="uploadedImage" class="upload-image" type="file" name="img" @change="uploadFile"/>
                         </label>
                     </div>
                     <div class="configuration">
                         <span class="color-settings">
-                            <label for="systemSelect">System:</label>
+                            <label for="systemSelect">Systema:</label>
                             <select id="systemSelect" @change="toggleSystem(event)" class="select-drop">
                                 <option value="HEX">HEX</option>
                                 <option value="RGB">RGB</option>
@@ -145,7 +145,7 @@
                     <div class="color-settings">
                         <div class="pixelated-container">
                             <label for="pixelatedCheckbox">
-                                <input @change="togglePixelated(event)" type="checkbox" id="pixelatedCheckbox"/>Pixelate:
+                                <input @change="togglePixelated(event)" type="checkbox" id="pixelatedCheckbox"/>Pixeles:
                             </label>
                             <input @change="pixelateCanva(event)" value="1" min="1" max="50" type="range" class="custom-range" id="pixelated"/>
                         </div>
@@ -160,8 +160,8 @@
                                 </span>
                             </div>
                         </div>
-                        <div :style="{textTransform: system != 'HEX' && customColor ? 'lowercase' : 'uppercase' } " class="color-hex">{{ customColor || "Click on image" }}</div>
-                        <div style="padding-bottom:20px" class="color-name">{{ customColorName || " To choose your own color!" }}</div>
+                        <div :style="{textTransform: system != 'HEX' && customColor ? 'lowercase' : 'uppercase' } " class="color-hex">{{ customColor || "Click en la imagen" }}</div>
+                        <div style="padding-bottom:20px" class="color-name">{{ customColorName || " Elige tu color color!" }}</div>
                     </div>
                     <ul>
                         <li v-for="color in colorPalette" class="palette-wrapper">
