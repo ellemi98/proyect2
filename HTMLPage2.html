@@ -109,6 +109,7 @@
                     <input type="file" id="upload-file" class="form-control" />
                     <label for="upload-file" class="input-group-text">Subir imagen</label>
                   </div>
+                  <img src="daltonismo.jpg" class="img-fluid" id="imagendef" />
                 </div>
 
               </div>
@@ -125,7 +126,7 @@
                
             </div>
             
-              <div class="editor-buttons">
+              <div class="editor-buttons" style="display: none;" id="editor-buttons">
             
                   <div class="row">
                     <div class="col-12 col-12-sm">
@@ -173,6 +174,7 @@
         var hexColor = "#ffffff";
 
         $(document).ready(function () {
+
             $("#maxrgb-btn").on("click", function (e) {
                 hexColor = $("#hex-color").val();
                 Caman("#canvas", function () {
@@ -254,6 +256,7 @@
             });
             $("#download-btn").on("click", function (e) {
                 var fileExtension = fileName.slice(-4);
+               
                 if (fileExtension == ".jpg" || fileExtension == ".png") {
                     var actualName = fileName.substring(0, fileName.length - 4);
                 }
@@ -263,15 +266,20 @@
             $("#upload-file").on("change", function () {
                 var file = document.querySelector("#upload-file").files[0];
                 var reader = new FileReader();
-
+                
                 if (file) {
                     fileName = file.name;
                     reader.readAsDataURL(file);
+                    var div = document.getElementById("imagendef");
+                    div.style.display = "none";
+                    var div3 = document.getElementById("editor-buttons");
+                    div3.style.display = "block";
                 }
 
                 reader.addEventListener(
                     "load",
                     function () {
+                       
                         img = new Image();
                         img.src = reader.result;
                         img.onload = function () {
